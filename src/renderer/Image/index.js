@@ -86,37 +86,14 @@ const getImageComponent = config => class Image extends Component {
     const entity = contentState.getEntity(block.getEntityAt(0));
     const { src, alignment, height, width, alt } = entity.getData();
 
-    return (
-      <span
-        onMouseEnter={this.toggleHovered}
-        onMouseLeave={this.toggleHovered}
-        className={classNames(
-          'rdw-image-alignment',
-          {
-            'rdw-image-left': alignment === 'left',
-            'rdw-image-right': alignment === 'right',
-            'rdw-image-center': !alignment || alignment === 'none',
-          },
-        )}
-      >
-        <span className="rdw-image-imagewrapper">
-          <img
-            src={src}
-            alt={alt}
-            style={{
-              height,
-              width,
-            }}
-          />
-          {
-            !isReadOnly() && hovered && isImageAlignmentEnabled() ?
-              this.renderAlignmentOptions(alignment)
-              :
-              undefined
-          }
-        </span>
-      </span>
-    );
+    return (<img
+        src={src}
+        alt={alt}
+        style={{
+          height,
+          width,
+        }}
+      />);
   }
 };
 
